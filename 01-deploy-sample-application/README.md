@@ -35,6 +35,13 @@ View all resources that exist in the eks-sample-app namespace.
 
 	kubectl get all --namespace eks-sample-app
 
+<img width="1039" alt="Screenshot 2023-01-15 at 11 07 31" src="https://user-images.githubusercontent.com/112865563/212537162-b61bdc66-7f48-4b25-9c56-f977de65edcd.png">
+
+You can see AWS automatically provisioned an external loadbalancer for the service type loadbalancer and you can access the application outside the cluster with the DNS name available under the EXTERNAL-IP field.
+
+<img width="1046" alt="Screenshot 2023-01-15 at 11 07 37" src="https://user-images.githubusercontent.com/112865563/212537170-abd8ca8a-9e9b-438d-9bed-56f8a7ffd857.png">
+
+
 ## Deploy a new application version
 
 In kubernetes you can easily deploy a new version of an existing deployment by updating the image details.
@@ -51,7 +58,3 @@ Review the deployment configurations and verify the image details
 Once you're finished with the sample application, you can remove the sample namespace, service, and deployment with the following command.
 
     kubectl delete namespace eks-sample-app
-
-
-
-
