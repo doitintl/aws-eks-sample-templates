@@ -100,6 +100,8 @@ Chimbus-MacBook-Pro:eks chimbu$     eksctl create cluster -f 02-demo-cluster.yam
 Chimbus-MacBook-Pro:eks chimbu$
 ```
 
+<img width="1512" alt="Screenshot 2023-01-15 at 11 12 17" src="https://user-images.githubusercontent.com/112865563/212537419-fbbc301a-6e00-4926-bbb5-f715a8ee0d54.png">
+
 Run the below command to destroy the cluster (expect this to take around 20 minutes):
 		
     eksctl delete cluster -f 02-demo-cluster.yaml
