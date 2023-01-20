@@ -4,5 +4,6 @@ This repository contains the sample templates to get started with AWS EKS quickl
 
 Each directory contains the instructions to deploy the required resources in EKS.
 
-https://user-images.githubusercontent.com/112865563/213636383-c7d1bce8-185d-490e-a362-c95af9500d66.mp4
+## Demo - create a new eks cluster and deploy a sample application
 
+https://user-images.githubusercontent.com/112865563/213638891-8c4e03c0-4ef4-4e1e-a2fb-9e0679317f89.mp4
