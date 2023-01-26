@@ -84,3 +84,7 @@ kubectl port-forward --namespace [K8S_NAMESPACE] svc/prometheus-server 8080:80
 ```
 
 Query the required metrics in promethues UI
+
+<img width="1920" alt="Screenshot 2023-01-26 at 14 53 24" src="https://user-images.githubusercontent.com/112865563/214868656-bb83c7c9-8f6d-49c8-87d6-7c4c74516cae.png">
+
+<img width="1919" alt="Screenshot 2023-01-26 at 14 55 32" src="https://user-images.githubusercontent.com/112865563/214868685-3a920f58-557a-49dd-9015-1e06cb921e51.png">
