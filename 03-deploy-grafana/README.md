@@ -61,19 +61,21 @@ kubectl get secrets grafana --template='{{ range $key, $value := .data }}{{ prin
 
 Login to grafana with the default username and password
 
+<img width="1920" alt="Screenshot 2023-01-26 at 17 01 01" src="https://user-images.githubusercontent.com/112865563/214902327-833852dc-45cb-4227-b775-e832d4774893.png">
+
+
 ## Configure prometheus Datasource
 
 Follow the below steps to configure the prometheus data source and access the data stored in prometheus 
 
 Goto Datasources -> Add data source -> Select Prometheus -> configure the datasource with prometheus endpoint -> Click "Save & Exit"
 
+<img width="1049" alt="Screenshot 2023-01-26 at 17 03 37" src="https://user-images.githubusercontent.com/112865563/214902391-3d27bbfc-9416-4818-a784-61ffdbac2b05.png">
+
 You should see a Successful "Data source is working" message if the prometheus endpoint is configured as expected.
+
+<img width="1920" alt="Screenshot 2023-01-26 at 17 11 29" src="https://user-images.githubusercontent.com/112865563/214902736-be4fe1bf-dc69-48ff-8c92-5e073935fcd6.png">
 
 You can now able to query the metrics in grafana and create dashboards/setup alerts.
 
-
-
-
-
-
-
+<img width="1920" alt="Screenshot 2023-01-26 at 17 05 38" src="https://user-images.githubusercontent.com/112865563/214902492-a9bf84ef-6d08-4f9e-8077-210cfaaa6546.png">
