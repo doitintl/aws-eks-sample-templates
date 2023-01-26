@@ -1,4 +1,4 @@
-# deploy-prometheus
+# Deploy prometheus
 
 [Prometheus](https://prometheus.io/), a [Cloud Native Computing Foundation](https://cncf.io/) project, is  is a popular open-source monitoring and alerting solution optimized for container environments. 
 
@@ -10,7 +10,7 @@ If you are looking for a fully managed prometheus offering then please refer to 
 
 ## Prerequisites
 
-- Kubernetes 1.16+
+- Kubernetes 1.22+
 - Helm 3.9+
 
 ## Get Repository Info
@@ -20,7 +20,7 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm repo update
 ```
 
-## Install/Upgrade prometheus with helm chart default values 
+## Install/Upgrade prometheus with default values 
 
 ```console
 helm upgrade -install [RELEASE_NAME] prometheus-community/prometheus --namespace [K8S_NAMESPACE] --create-namespace --wait --debug
@@ -45,7 +45,7 @@ The above commands install the latest chart version and use the `--version` argu
 helm upgrade -install [RELEASE_NAME] prometheus-community/prometheus --namespace [K8S_NAMESPACE] --version 18.0.0 --create-namespace --wait --debug
 ```
 
-## Install/Upgrade prometheus with custom helm chart values file
+## Install/Upgrade prometheus with custom values
 
 - Create a `values.yaml` file with custom helm chart inputs. Refer to the `values.yaml` file in this repo for sample configurations. 
 
@@ -75,7 +75,7 @@ You should adjust `prometheus.io/path` based on the URL that your pod serves met
 
 ## View/Query Pod Metrics
 
-This chart creates a `prometheus-server` service with `ClusterIP` type which is accessible only inside the cluster. Change the service type to `LoadBalancer` if you want to access prometheus outside cluster.
+This chart creates a `prometheus-server` service with `ClusterIP` type which is accessible only inside the cluster. Change the [service type](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml#L562) to `LoadBalancer` if you want to access prometheus outside cluster.
 
 Implement [basic-auth](https://prometheus.io/docs/guides/basic-auth/) and IP restrictions if you are exposing prometheus outside the cluster.
 
