@@ -1,8 +1,12 @@
-# Prometheus
+# deploy-prometheus
 
-[Prometheus](https://prometheus.io/), a [Cloud Native Computing Foundation](https://cncf.io/) project, is a systems and service monitoring system. It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts if some condition is observed to be true.
+[Prometheus](https://prometheus.io/), a [Cloud Native Computing Foundation](https://cncf.io/) project, is  is a popular open-source monitoring and alerting solution optimized for container environments. 
 
-Follow the instructions in this document to deploy prometheus in EKE cluster and it is based on [Prometheus Community Kubernetes Helm Charts](https://github.com/prometheus-community/helm-charts)
+It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts if some condition is observed to be true.
+
+Follow the instructions in this document to deploy a self-managed prometheus in EKE cluster and the instructions are based on [Prometheus Community Kubernetes Helm Charts](https://github.com/prometheus-community/helm-charts)
+
+If you are looking for a fully managed prometheus offering then please refer to [Amazon Managed Service for Prometheus](https://aws.amazon.com/prometheus/). 
 
 ## Prerequisites
 
@@ -52,3 +56,31 @@ Run the following command to install prometheus with custom configurations
 ```console
 helm upgrade -install [RELEASE_NAME] prometheus-community/prometheus --namespace [K8S_NAMESPACE] -f values.yaml --create-namespace --wait --debug
 ```
+
+## Scraping Pod Metrics
+
+This chart uses a default configuration that causes prometheus to scrape a variety of kubernetes resource types, provided they have the correct annotations. 
+
+In order to get prometheus to scrape pods, you must add annotations to the the pods as below:
+
+```yaml
+metadata:
+  annotations:
+    prometheus.io/scrape: "true"
+    prometheus.io/path: /metrics
+    prometheus.io/port: "8080"
+```
+
+You should adjust `prometheus.io/path` based on the URL that your pod serves metrics from. `prometheus.io/port` should be set to the port that your pod serves metrics from. Note that the values for `prometheus.io/scrape` and `prometheus.io/port` must be enclosed in double quotes.
+
+## View/Query Pod Metrics
+
+This chart creates a `prometheus-server` service with `ClusterIP` type which is accessible only inside the cluster. Change the service type to `LoadBalancer` if you want to access prometheus outside cluster. We recommend you not to expose prometheus outside cluster. 
+
+Run the following `kubectl port-forward` command to connect to prometheus-server and go to `localhost:8080` in the browser.
+
+```console
+kubectl port-forward --namespace [K8S_NAMESPACE] svc/prometheus-server 8080:80
+```
+
+Query the required metrics in promethues UI
