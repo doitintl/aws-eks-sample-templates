@@ -49,7 +49,7 @@ helm upgrade -install [RELEASE_NAME] prometheus-community/prometheus --namespace
 
 - Create a `values.yaml` file with custom helm chart inputs. Refer to the `values.yaml` file in this repo for sample configurations. 
 
-- Refer to the [official charts](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus) for recent configurations. 
+- Refer to the [official promethues chart](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus) for recent configurations. 
 
 Run the following command to install prometheus with custom configurations
 
@@ -59,9 +59,9 @@ helm upgrade -install [RELEASE_NAME] prometheus-community/prometheus --namespace
 
 ## Scraping Pod Metrics
 
-This chart uses a default configuration that causes prometheus to scrape a variety of kubernetes resource types, provided they have the correct annotations. 
+This chart uses a default configuration that causes prometheus to scrape a variety of [kubernetes resource types](https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml#L614), provided they have the correct annotations. 
 
-In order to get prometheus to scrape pods, you must add annotations to the the pods as below:
+In order to get prometheus to scrape pods, you must add annotations to the the required pods as below:
 
 ```yaml
 metadata:
@@ -75,7 +75,9 @@ You should adjust `prometheus.io/path` based on the URL that your pod serves met
 
 ## View/Query Pod Metrics
 
-This chart creates a `prometheus-server` service with `ClusterIP` type which is accessible only inside the cluster. Change the service type to `LoadBalancer` if you want to access prometheus outside cluster. We recommend you not to expose prometheus outside cluster. 
+This chart creates a `prometheus-server` service with `ClusterIP` type which is accessible only inside the cluster. Change the service type to `LoadBalancer` if you want to access prometheus outside cluster.
+
+Implement [basic-auth](https://prometheus.io/docs/guides/basic-auth/) and IP restrictions if you are exposing prometheus outside the cluster.
 
 Run the following `kubectl port-forward` command to connect to prometheus-server and go to `localhost:8080` in the browser.
 
