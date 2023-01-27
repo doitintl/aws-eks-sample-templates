@@ -63,3 +63,4 @@ Change the `targetRevision` version `6.50.5` in `grafana.yaml` file and apply th
 
 ## Demo
 
+https://user-images.githubusercontent.com/112865563/215147384-92f62a74-b411-42e9-859a-5896ad870707.mp4
