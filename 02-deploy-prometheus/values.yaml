@@ -194,8 +194,6 @@ server:
   ##
   ## Useful for providing HTTP Basic Auth to healthchecks
   probeHeaders: []
-    # - name: "Authorization"
-    #   value: "Bearer ABCDEabcde12345"
 
   ## Additional Prometheus server container arguments
   ##
