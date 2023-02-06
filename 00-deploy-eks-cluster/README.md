@@ -7,7 +7,7 @@ This example is based on eksctl which is a simple CLI tool for creating and mana
 - An active AWS account
 - VPC - eksctl creates a new vpc named eksctl-my-demo-cluster-cluster/VPC in the target region
 - IAM permissions – The IAM security principal that you're using must have permissions to work with Amazon EKS IAM roles and service-linked roles, AWS CloudFormation, and a VPC and related resources.
-- Install kubectl,eksctl and AWS CLI in your local machine or in the CICD setup
+- Install [kubectl](https://kubernetes.io/docs/tasks/tools/),[eksctl](https://eksctl.io/introduction/?h=install#installation) and [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) in your local machine or in the CICD setup
 
 ### IAM Setup
 

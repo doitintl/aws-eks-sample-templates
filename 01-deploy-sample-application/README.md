@@ -2,6 +2,11 @@
 
 Follow the instructions after the EKS cluster configurations are completed. We will deploy a few core kubernetes objects and provision an external loadbalancer to access the application outside the EKS cluster.
 
+## Prerequisites
+
+- An active EKS cluster and kubectl is configured to the correct EKS cluster
+- Clone this repo to your local and set the current working directory to the cloned repo
+
 ## Create a Namespace
 
 In Kubernetes namespaces provide a mechanism for isolating groups of resources within a single cluster. Names of resources need to be unique within a namespace, but not across namespaces. Run the below command to create namespace
