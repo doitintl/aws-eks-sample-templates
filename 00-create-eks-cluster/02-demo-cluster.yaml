@@ -1,0 +1,29 @@
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+metadata:
+    name: my-demo-cluster
+    region: us-west-2
+addons:
+- name: vpc-cni
+  version: latest
+  resolveConflicts: overwrite
+- name: coredns
+  version: latest
+  configurationValues: "{\"replicaCount\":3}"
+  resolveConflicts: overwrite
+- name: aws-ebs-csi-driver
+  version: latest
+  resolveConflicts: overwrite
+- name: kube-proxy
+  version: latest
+  resolveConflicts: overwrite
+managedNodeGroups:
+    - name: my-demo-workers
+      labels: { role: workers }
+      instanceType: t3.large
+      volumeSize: 100
+      privateNetworking: true
+      desiredCapacity: 2
+      minSize: 1
+      maxSize: 4

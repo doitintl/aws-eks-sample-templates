@@ -17,7 +17,7 @@ Use the [manifests](https://raw.githubusercontent.com/argoproj/argo-cd/stable/ma
 Run the command `kubectl get pods -n argocd` to verify the installation and ensure all the pods are in `Running` state.
 
 ```console
-Chimbus-MBP:argocd chimbu$ kubectl get pods -n argocd
+❯❯ kubectl get pods -n argocd
 NAME                                               READY   STATUS    RESTARTS   AGE
 argocd-application-controller-0                    1/1     Running   0          136m
 argocd-applicationset-controller-bdbc5976d-rsz4p   1/1     Running   0          136m
@@ -26,7 +26,7 @@ argocd-notifications-controller-56dbd4976-4kdjn    1/1     Running   0          
 argocd-redis-6bdcf5f74-wdx5v                       1/1     Running   0          136m
 argocd-repo-server-5bcc9567f8-5rjfc                1/1     Running   0          136m
 argocd-server-5ccfbc6db6-dz8c5                     1/1     Running   0          136m
-Chimbus-MBP:argocd chimbu$
+
 ```
 
 Kubectl port-forwarding can be used to connect to the Argo CD API server without exposing the service.

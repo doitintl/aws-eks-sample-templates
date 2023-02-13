@@ -5,17 +5,17 @@ This example is based on eksctl which is a simple CLI tool for creating and mana
 ## Prerequisites
 
 - An active AWS account
-- VPC - eksctl creates a new vpc named eksctl-my-demo-cluster-cluster/VPC in the target region
+- VPC - eksctl creates a new vpc named eksctl-my-demo-cluster-cluster/VPC in the target region (if you need to use custom vpc configuration then refer to [link](https://eksctl.io/usage/creating-and-managing-clusters/#:~:text=If%20you%20needed%20to%20use%20an%20existing%20VPC%2C%20you%20can%20use%20a%20config%20file%20like%20this%3A))
 - IAM permissions – The IAM security principal that you're using must have permissions to work with Amazon EKS IAM roles and service-linked roles, AWS CloudFormation, and a VPC and related resources.
 - Install [kubectl](https://kubernetes.io/docs/tasks/tools/),[eksctl](https://eksctl.io/introduction/?h=install#installation) and [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) in your local machine or in the CICD setup
 
 ### IAM Setup
 
-- For this setup, create an IAM policy name AmazonEKSAdminPolicy with the policy details in `01-AmazonEKSAdminPolicy.json` and attach the policy to the principal
+- For this setup, create an IAM policy name AmazonEKSAdminPolicy with the policy details in `01-AmazonEKSAdminPolicy.json` and attach the policy to the principal creating the cluster.
 
 ### Creating an EKS cluster
 
-The eksctl tool uses CloudFormation under the hood, creating one stack for the EKS master control plane and another stack for the worker nodes.
+The eksctl tool uses CloudFormation under the hood, creating one stack for the EKS master control plane and another stack for the worker nodes. Refer to [eksctl](https://eksctl.io/introduction/) for all avaiable configuration options.
 
 Run the command below to create a new cluster in the `us-west-2` region; expect this to take around 20 minutes and refer to eksctl documentation for all available options to customize the cluster configurations.
 
@@ -37,7 +37,7 @@ Run the below command to create the cluster (expect this to take around 20 minut
 Sample log:
 
 ```
-Chimbus-MacBook-Pro:eks chimbu$     eksctl create cluster -f 02-demo-cluster.yaml
+❯❯ eksctl create cluster -f 02-demo-cluster.yaml
 2023-01-15 10:52:38 [ℹ]  eksctl version 0.124.0-dev+ac917eb50.2022-12-23T08:05:44Z
 2023-01-15 10:52:38 [ℹ]  using region us-west-2
 2023-01-15 10:52:39 [ℹ]  setting availability zones to [us-west-2c us-west-2a us-west-2b]
@@ -97,7 +97,7 @@ Chimbus-MacBook-Pro:eks chimbu$     eksctl create cluster -f 02-demo-cluster.yam
 2023-01-15 11:10:05 [ℹ]  node "ip-192-168-84-235.us-west-2.compute.internal" is not ready
 2023-01-15 11:10:07 [ℹ]  kubectl command should work with "/Users/chimbu/.kube/config", try 'kubectl get nodes'
 2023-01-15 11:10:07 [✔]  EKS cluster "my-demo-cluster" in "us-west-2" region is ready
-Chimbus-MacBook-Pro:eks chimbu$
+
 ```
 
 <img width="1512" alt="Screenshot 2023-01-15 at 11 12 17" src="https://user-images.githubusercontent.com/112865563/212537419-fbbc301a-6e00-4926-bbb5-f715a8ee0d54.png">
@@ -105,3 +105,29 @@ Chimbus-MacBook-Pro:eks chimbu$
 Run the below command to destroy the cluster (expect this to take around 20 minutes):
 		
     eksctl delete cluster -f 02-demo-cluster.yaml
+
+eksctl automatically updates the kubeconfig with the cluster configurations. Run the below command to verify the cluster connecivity
+
+    kubectl get pods --all-namespaces
+
+Sample output:
+
+```
+❯❯ kubectl get pods --all-namespaces
+NAMESPACE        NAME                                  READY   STATUS    RESTARTS   AGE
+default          nginx                                 1/1     Running   0          36h
+elastic-system   elastic-operator-0                    1/1     Running   0          36h
+kube-system      aws-node-26f7k                        1/1     Running   0          37h
+kube-system      aws-node-8x2fh                        1/1     Running   0          37h
+kube-system      aws-node-nsqjc                        1/1     Running   0          37h
+kube-system      coredns-57ff979f67-m2hlh              1/1     Running   0          37h
+kube-system      coredns-57ff979f67-qvxqx              1/1     Running   0          37h
+kube-system      ebs-csi-controller-6d4b84cd85-kfjz4   6/6     Running   0          36h
+kube-system      ebs-csi-controller-6d4b84cd85-vvjlf   6/6     Running   0          36h
+kube-system      ebs-csi-node-d9hkt                    3/3     Running   0          36h
+kube-system      ebs-csi-node-pv688                    3/3     Running   0          36h
+kube-system      ebs-csi-node-wmmq4                    3/3     Running   0          36h
+kube-system      kube-proxy-9hxsh                      1/1     Running   0          37h
+kube-system      kube-proxy-9jlqz                      1/1     Running   0          37h
+kube-system      kube-proxy-dgtgv                      1/1     Running   0          37h
+```
