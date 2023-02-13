@@ -166,7 +166,9 @@ replicaset.apps/demo-kb-799d67ffff   1         1         1       2m53s
 
 Access the kibana application via the network loadbalancer and use the default elasticsearch username and password. (Ex: https://a8cad8cba32374f788b1744cb79c46d5-2001568967.us-west-2.elb.amazonaws.com:5601)
 
+![Screenshot 2023-02-13 at 11 26 07](https://user-images.githubusercontent.com/112865563/218456889-44b9a760-cd5b-4a78-ab27-3fc91072eca2.jpeg)
 
+![Screenshot 2023-02-13 at 11 27 29](https://user-images.githubusercontent.com/112865563/218456816-c55e8e56-d7c1-4579-87b5-e10ef22582e4.jpeg)
 
 ## Deploy Filebeat
 
@@ -196,3 +198,10 @@ daemonset.apps/demo-beat-filebeat   2         2         2       2            2  
 
 Login to kibana and create a data view to explore the collected data. Also deploy a sample application and explore the log data.
 
+![Screenshot 2023-02-13 at 11 27 52](https://user-images.githubusercontent.com/112865563/218457017-a8cf3742-9a61-4123-8cf3-973ba17b1a0c.jpeg)
+
+![Screenshot 2023-02-13 at 11 42 33](https://user-images.githubusercontent.com/112865563/218457038-6970def8-a1ea-4b31-8aaf-53cc260fe0a8.jpeg)
+
+![Screenshot 2023-02-13 at 11 25 22](https://user-images.githubusercontent.com/112865563/218457121-387c3594-e416-490a-8bf3-5ac9fe5be808.jpeg)
+
+![Screenshot 2023-02-13 at 11 25 42](https://user-images.githubusercontent.com/112865563/218457163-e8eddb76-2e69-4d4c-926f-cfef60c05332.jpeg)
