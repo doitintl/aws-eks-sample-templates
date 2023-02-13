@@ -1,4 +1,4 @@
-# deploy-ELK-stack
+# deploy-Elasticsearch-Filebeat-Kibana-stack
 
 This repository contains sample code to deploy a self-managed elastic search cluster in EKS with kibana and filebat.
 
