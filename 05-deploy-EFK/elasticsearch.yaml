@@ -1,0 +1,37 @@
+apiVersion: elasticsearch.k8s.elastic.co/v1
+kind: Elasticsearch
+metadata:
+  name: demo
+spec:
+  version: 8.6.1
+  nodeSets:
+  - name: masters
+    count: 1
+    config:
+      node.roles: ["master"]
+      node.store.allow_mmap: false
+    volumeClaimTemplates:
+    - metadata:
+        name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10Gi
+        storageClassName: gp2 #default storage class in eks
+  - name: data
+    count: 2
+    config:
+      node.roles: ["data", "ingest", "ml", "transform"]
+      node.store.allow_mmap: false
+    volumeClaimTemplates:
+    - metadata:
+        name: elasticsearch-data # Do not change this name unless you set up a volume mount for the data path.
+      spec:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 10Gi
+        storageClassName: gp2 #default storage class in eks
