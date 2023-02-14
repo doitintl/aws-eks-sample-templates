@@ -13,7 +13,7 @@ The sample configurations are based on elastic search version 8.6.1 and. Refer t
 ## Prerequisites
 
 - [EKS cluster with Kubernetes 1.22+](https://github.com/doitintl/aws-eks-devops-best-practices/tree/main/00-create-eks-cluster)
-- [EKS cluster with Amazon EBS CSI Driver](https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html)
+- [EKS cluster with Amazon EBS CSI Driver](https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html) (Note: The add-on is deployed as part of cluster creation if you have used [create-eks-cluster](https://github.com/doitintl/aws-eks-devops-best-practices/tree/main/00-create-eks-cluster)]
 - Attach `AmazonEBSCSIDriverPolicy` to the worker node role
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 
