@@ -12,10 +12,10 @@ The sample configurations are based on elastic search version 8.6.1 and. Refer t
 
 ## Prerequisites
 
-- EKS cluster with Kubernetes 1.22+
-- EKS cluster with Amazon EBS CSI Driver
+- [EKS cluster with Kubernetes 1.22+](https://github.com/doitintl/aws-eks-devops-best-practices/tree/main/00-create-eks-cluster)
+- [EKS cluster with Amazon EBS CSI Driver](https://docs.aws.amazon.com/eks/latest/userguide/managing-ebs-csi.html)
 - Attach `AmazonEBSCSIDriverPolicy` to the worker node role
-- kubectl
+- [kubectl](https://kubernetes.io/docs/tasks/tools/)
 
 ## Install ECK Operator
 
