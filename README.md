@@ -1,4 +1,4 @@
-# aws-eks-devops-best-practices
+# aws-eks-sample-templates
 
 This repository contains the sample templates to get started with AWS EKS quickly
 
