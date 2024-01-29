@@ -1,0 +1,1 @@
+Please refer to [keda-eks-event-driven-autoscaling-demo](https://github.com/ChimbuChinnadurai/keda-eks-event-driven-autoscaling-demo/tree/main) for EKS KEDA example.
